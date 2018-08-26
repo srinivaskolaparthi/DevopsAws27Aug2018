@@ -1,0 +1,24 @@
+
+Proxy Repository
+A Proxy Repository is a proxy of a remote repository. By default, Nexus ships with the following configured proxy repositories:
+
+Apache Snapshots
+This repository contains snapshot releases from the Apache Software Foundation.
+
+Codehaus Snapshots
+This repository contains snapshot releases from Codehaus.
+
+Central
+This is the Central Repository containing release components. Formerly known as Maven Central, it is the default built-in repository for Apache Maven and directly supported in other build tools like Gradle, SBT or Ant/Ivy. Nexus connects to the Central Repository via HTTPS using the URL https://repo1.maven.org/maven2/.
+
+Hosted Repository
+A Hosted Repository is a repository that is hosted by Nexus. Nexus ships with the following configured hosted repositories:
+
+3rd Party
+This hosted repository should be used for third-party dependencies not available in the public Maven repositories. Examples of these dependencies could be commercial, proprietary libraries such as an Oracle JDBC driver that may be referenced by your organization.
+
+Releases
+This hosted repository is where your organization will publish internal releases.
+
+Snapshots
+This hosted repository is where your organization will publish internal snapshots.
