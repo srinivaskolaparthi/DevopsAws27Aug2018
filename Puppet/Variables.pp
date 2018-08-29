@@ -15,3 +15,5 @@ $user = bin
    }
  =======================================
  
+include '::mysql::server'
+include '::php'
