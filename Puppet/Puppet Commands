@@ -1,0 +1,11 @@
+
+To view all the resource types available use the following command:
+puppet resource --types
+
+puppet apply site.pp --noop
+
+Puppet describe file
+
+For the full list of available descriptions try:
+puppet describe --list
+
