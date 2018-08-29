@@ -1,0 +1,7 @@
+
+$environment (also available to puppet apply) — the agent node’s environment. Note that nodes can accidentally or purposefully override this with a custom fact; the $server_facts['environment'] variable always contains the correct environment, and can’t be overridden.
+$servername — the Puppet master’s fully-qualified domain name. (Note that this information is gathered from the Puppet master by Facter, rather than read from the config files; even if the master’s certname is set to something other than its fully-qualified domain name, this variable will still contain the server’s fqdn.)
+$serverip — the Puppet master’s IP address.
+$serverversion — the current version of Puppet on the Puppet master.
+$settings::<name of setting> (also available to puppet apply) — the value of any of the master’s settings. This is implemented as a special namespace and these variables must be referred to by their qualified names. Note that, other than $environment and $clientnoop, the agent node’s settings are not available in manifests. If you wish to expose them to the master in this version of Puppet, you will have to create a custom fact.
+$settings::all_local — contains all variables in the $settings namespace as a Hash of <SETTING-NAME> => <SETTING-VALUE>. This helps you reference settings that might be missing, because a direct reference to such a missing setting raises an error when --strict_variables is enabled.
