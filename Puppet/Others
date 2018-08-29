@@ -1,6 +1,7 @@
 
 $osfamily
 $system32
+$OperatingSystem
 
 Puppet’s data types:
 Strings
