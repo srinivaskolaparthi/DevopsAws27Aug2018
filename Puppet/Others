@@ -1,0 +1,14 @@
+
+$osfamily
+
+Puppet’s data types:
+Strings
+Numbers
+Booleans
+Arrays
+Hashes
+Regular Expressions
+Sensitive
+Undef
+Resource References
+Default
