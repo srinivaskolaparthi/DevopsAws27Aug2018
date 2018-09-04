@@ -1,0 +1,15 @@
+
+Public IP addresses are dynamic - i.e. if you stop/start your instance you get reassigned a new public IP.
+
+Elastic IPs get allocated to your account, and stay the same - it's up to you to attach them to an instance or not. You could say 
+they are static public IP addresses.
+
+Famously you get charged for them, if they're not attached to an instance.
+
+--------------------------------------------------------------------------------------
+
+A public IP address is assigned to your instance from Amazon's pool of public IP addresses; it's not associated with your account. When a public IP address is disassociated       from your instance, it's released back into the pool, and is no longer available for you to       use. You cannot manually associate or disassociate a public IP address. Instead, in certain       cases, we release the public IP address from your instance, or assign it a new one.
+
+However,If you require a persistent public IP address that can be assigned to and removed from instances as you require, use an Elastic IP address instead. To do this, you must allocate an Elastic IP address for use with the VPC, and then associate that Elastic IP address with a private IP address specified by the network interface attached to the instance.
+
+Therefore the major advantage of having elastic IP is that it is persistent and associated with your AWSa ccount.
