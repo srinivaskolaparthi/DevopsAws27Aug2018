@@ -1,0 +1,7 @@
+SSH Error: Permission denied (publickey,password) in Ansible?
+Sol)
+Most of the issue happen while connecting Ubuntu machines in hosts. Solution Ansible required which user want to connect because of Ubuntu doesn't having default root user.
+
+for Hosts file
+[Test-Web-Server]
+10.192.168.10 ansible_ssh_pass=foo ansible_ssh_user=foo
