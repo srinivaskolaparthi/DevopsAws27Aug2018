@@ -1,0 +1,24 @@
+
+$ sudo apt-get update 
+$ sudo apt-get install software-properties-common 
+$ sudo apt-add-repository ppa:ansible/ansible $ sudo apt-get update 
+$ sudo apt-get install ansible
+
+ansible --version
+
+Control machine − Machine from where we can manage other machines.
+
+Remote machine − Machines which are handled/controlled by control machine.
+Service/Server − A process on the machine that provides the service.
+
+Machine − A physical server, vm(virtual machine) or a container.
+
+Target machine − A machine we are about to configure with Ansible.
+
+Task − An action(run this, delete that) etc managed by Ansible.
+
+Playbook − The yml file where Ansible commands are written and yml is executed on a machine.
+
+vi /etc/ansible/hosts
+ansible -i ~/hosts -m ping all
+ansible -i hosts -m shell -a 'uptime' all===>Find uptime for hosts.
