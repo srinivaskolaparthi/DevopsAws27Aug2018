@@ -1,0 +1,33 @@
+
+Using Amazon’s Simple Queue Service (SQS)
+------------------------------------------
+SQS can provide the persistency needed. The message will be available until it is deleted (at least up to ~3 days) even if the 
+worker processes are down or have a bug.
+
+The problem with using SQS is that it requires polling which introduces a certain delay between the time a message is published and 
+until it is processed. That delay can be small, a couple of seconds, but can easily be up to 30 seconds and more 
+(depending on the limitations of SQS polling and the polling interval used).
+
+Using Amazon’s Simple Notification Service (SNS)
+------------------------------------------------
+SNS can provide a push mechanism to notify in near-real-time to a subscriber that a message has been published.
+However, SNS can only guarantee a single delivery to each subscriber of a given topic. This means that if there was a bug or a
+problem processing the message and there was no specific code to save it somewhere, the message is lost.
+
+The Solution
+-------------
+SQS and SNS can be combined to produce a PUSH mechanism to reliably handle messages.
+
+The general configuration steps are:
+Create a topic
+Subscribe an SQS queue to that topic
+Subscribe a worker process that work via HTTP/S to that topic (for increased reliability this can be an Elastic Load Balancer (ELB) 
+that hides a set of machines)
+
+Then the flow goes like this:
+Submit a message to the topic
+SNS will publish the message to the SQS queue
+SNS will then notify via HTTP/S POST to the handler to start processing the message
+When the worker process gets the HTTP/S POST from SNS it will start polling the queue until it has no items in the queue and finish the HTTP request.
+To handle failures when the worker process has a bug or is down or did not get the SNS message, a regular worker process can run and poll the queue in regular, longer, intervals to make sure all messages are processed and no one gets behind.
+This solution covers the original 3 requirements of message reliability, handling cases where workers are down or have bugs and handling messages as soon as they are sent.
